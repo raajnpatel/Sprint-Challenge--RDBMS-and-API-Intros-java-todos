@@ -45,7 +45,7 @@ class SeedData implements CommandLineRunner
                                  r2));
         admins.add(new UserRoles(new User(),
                                  r3));
-         User u1 = new User("admin",
+        User u1 = new User("admin",
                            "password",
                            admins);
         u1.getTodos().add(new Todo("Finish java-orders-swagger", new Date(), u1));

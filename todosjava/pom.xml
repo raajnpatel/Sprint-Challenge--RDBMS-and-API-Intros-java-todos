@@ -8,14 +8,14 @@
         <version>2.1.9.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>local.raajn</groupId>
-    <artifactId>todosjava</artifactId>
+    <groupId>com.krishannattar</groupId>
+    <artifactId>sprint</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>todosjava</name>
-    <description>Demo project for Spring Boot</description>
+    <name>sprint</name>
+    <description>Java Todo Sprint Project</description>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>12</java.version>
     </properties>
 
     <dependencies>

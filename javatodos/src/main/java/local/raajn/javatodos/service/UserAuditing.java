@@ -10,14 +10,12 @@ import java.util.Optional;
 @Component
 public class UserAuditing implements AuditorAware<String>
 {
-
     @Override
     public Optional<String> getCurrentAuditor()
     {
         String uname;
-        Authentication authentication = SecurityContextHolder.getContext()
-                                                             .getAuthentication();
-        if (authentication != null)
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication!=null)
         {
             uname = authentication.getName();
         } else
@@ -26,5 +24,4 @@ public class UserAuditing implements AuditorAware<String>
         }
         return Optional.of(uname);
     }
-
 }

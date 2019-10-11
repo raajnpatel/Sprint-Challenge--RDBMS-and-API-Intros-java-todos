@@ -2,7 +2,6 @@ package local.raajn.javatodos.models;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Table(name = "todos")
@@ -10,13 +9,12 @@ public class Todo extends Auditable
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(nullable = false)
     private long todoid;
 
     @Column(nullable = false)
     private String description;
 
-    private Date datestarted;
+    private LocalDateTime datetime;
     private boolean completed;
 
     @ManyToOne
@@ -27,17 +25,12 @@ public class Todo extends Auditable
     {
     }
 
-    public Todo(String description, Date datestarted, User user)
+    public Todo(String description, LocalDateTime datetime, boolean completed, User user)
     {
         this.description = description;
-        this.datestarted = datestarted;
-//        this.completed = false;
+        this.datetime = datetime;
+        this.completed = completed;
         this.user = user;
-    }
-
-    public Todo(String description, LocalDateTime now, boolean b, User newUser)
-    {
-        super();
     }
 
     public long getTodoid()
@@ -55,14 +48,14 @@ public class Todo extends Auditable
         this.description = description;
     }
 
-    public Date getDatestarted()
+    public LocalDateTime getDatetime()
     {
-        return datestarted;
+        return datetime;
     }
 
-    public void setDatestarted(Date datestarted)
+    public void setDatetime(LocalDateTime datetime)
     {
-        this.datestarted = datestarted;
+        this.datetime = datetime;
     }
 
     public boolean isCompleted()

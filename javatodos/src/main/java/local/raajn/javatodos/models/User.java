@@ -6,7 +6,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +26,7 @@ public class User extends Auditable
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties("user")
-    private List<Todo> todos = new ArrayList<>();
+    private List<Todo> todos;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties("user")
@@ -39,15 +38,14 @@ public class User extends Auditable
 
     public User(String username, String password, List<UserRoles> userRoles)
     {
-        setUsername(username);
-        setPassword(password);
+        this.username = username;
+        this.password = password;
         for (UserRoles ur: userRoles)
         {
             ur.setUser(this);
         }
         this.userRoles = userRoles;
     }
-
 
     public long getUserid()
     {

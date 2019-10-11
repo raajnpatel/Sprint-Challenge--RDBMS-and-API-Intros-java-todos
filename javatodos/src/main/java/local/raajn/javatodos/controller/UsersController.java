@@ -44,7 +44,7 @@ public class UsersController
     public ResponseEntity<?> addTodo(@RequestBody Todo newTodo, @PathVariable long userid)
     {
         Todo returnTodo = todoService.update(newTodo,userid);
-        return new ResponseEntity<>(returnTodo, HttpStatus.CREATED);
+        return new ResponseEntity<>(returnTodo,HttpStatus.CREATED);
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
@@ -52,7 +52,7 @@ public class UsersController
     public ResponseEntity<?> deleteUser(@PathVariable long userid)
     {
         userService.delete(userid);
-        return new ResponseEntity<>(userid, HttpStatus.OK);
+        return new ResponseEntity<>(userid,HttpStatus.OK);
     }
 
 }

@@ -1,6 +1,7 @@
 package local.raajn.javatodos.models;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -32,6 +33,11 @@ public class Todo extends Auditable
         this.datestarted = datestarted;
 //        this.completed = false;
         this.user = user;
+    }
+
+    public Todo(String description, LocalDateTime now, boolean b, User newUser)
+    {
+        super();
     }
 
     public long getTodoid()

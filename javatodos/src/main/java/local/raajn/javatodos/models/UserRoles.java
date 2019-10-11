@@ -8,7 +8,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "userroles")
-public class UserRole extends Auditable implements Serializable
+public class UserRoles extends Auditable implements Serializable
 {
     @Id
     @ManyToOne
@@ -22,11 +22,11 @@ public class UserRole extends Auditable implements Serializable
     @JoinColumn(name = "roleid")
     private Role role;
 
-    public UserRole()
+    public UserRoles()
     {
     }
 
-    public UserRole(User user, Role role)
+    public UserRoles(User user, Role role)
     {
         this.user = user;
         this.role = role;
@@ -59,12 +59,12 @@ public class UserRole extends Auditable implements Serializable
         {
             return true;
         }
-        if (!(o instanceof UserRole))
+        if (!(o instanceof UserRoles))
         {
             return false;
         }
-        UserRole userRole = (UserRole) o;
-        return getUser().equals(userRole.getUser()) && getRole().equals(userRole.getRole());
+        UserRoles userRoles = (UserRoles) o;
+        return getUser().equals(userRoles.getUser()) && getRole().equals(userRoles.getRole());
     }
 
     @Override

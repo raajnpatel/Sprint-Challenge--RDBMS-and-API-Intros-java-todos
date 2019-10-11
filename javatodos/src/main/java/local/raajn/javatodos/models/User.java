@@ -6,6 +6,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,22 +31,23 @@ public class User extends Auditable
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties("user")
-    private List<UserRole> userRoles = new ArrayList<>();
+    private List<UserRoles> userRoles = new ArrayList<>();
 
     public User()
     {
     }
 
-    public User(String username, String password, List<UserRole> userRoles)
+    public User(String username, String password, List<UserRoles> userRoles)
     {
         setUsername(username);
         setPassword(password);
-        for (UserRole ur: userRoles)
+        for (UserRoles ur: userRoles)
         {
             ur.setUser(this);
         }
         this.userRoles = userRoles;
     }
+
 
     public long getUserid()
     {
@@ -94,12 +96,12 @@ public class User extends Auditable
         this.todos = todos;
     }
 
-    public List<UserRole> getUserRoles()
+    public List<UserRoles> getUserRoles()
     {
         return userRoles;
     }
 
-    public void setUserRoles(List<UserRole> userRoles)
+    public void setUserRoles(List<UserRoles> userRoles)
     {
         this.userRoles = userRoles;
     }
@@ -107,7 +109,7 @@ public class User extends Auditable
     public List<SimpleGrantedAuthority> getAuthority()
     {
         List<SimpleGrantedAuthority> rtnList = new ArrayList<>();
-        for (UserRole r : this.userRoles)
+        for (UserRoles r : this.userRoles)
         {
             String myRole = "ROLE_" + r.getRole().getRolename().toUpperCase();
             rtnList.add(new SimpleGrantedAuthority(myRole));

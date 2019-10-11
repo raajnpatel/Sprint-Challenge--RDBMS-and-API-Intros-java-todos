@@ -19,7 +19,7 @@ public class Role extends Auditable
 
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("role")
-    private List<UserRole> userRoles = new ArrayList<>();
+    private List<UserRoles> userRoles = new ArrayList<>();
 
     public Role()
     {
@@ -50,12 +50,12 @@ public class Role extends Auditable
         this.rolename = rolename;
     }
 
-    public List<UserRole> getUserRoles()
+    public List<UserRoles> getUserRoles()
     {
         return userRoles;
     }
 
-    public void setUserRoles(List<UserRole> userRoles)
+    public void setUserRoles(List<UserRoles> userRoles)
     {
         this.userRoles = userRoles;
     }
